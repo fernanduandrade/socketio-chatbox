@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const app = express();
 
@@ -7,10 +8,13 @@ const io = require('socket.io')(http);
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
+app.use(cors());
+
+
 io.on('connection',(socket) => {
 
 	socket.on('disconnect', () => {
-		console.log(socket.id + ' disconnected');
+		console.log(`Usuário com id: ${socket.id} disconectado`);
 	});	
 
 	socket.on('msg', (data) => {

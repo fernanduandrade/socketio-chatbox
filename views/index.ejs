@@ -8,7 +8,7 @@
 	<title>Friendly Chat</title>
 </head>
 <body>
-		<h1 id="greetings">Friendly Chat 😍</h1>
+		<h1 id="greetings">Friendly Chat 🙃</h1>
 
 		<div class="container">
 			<div id="chat">
@@ -28,7 +28,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
 <script>
 	
-	let socket = io('http://localhost:4001');
+	let socket = io('localhost:4001');
 
 	
 	socket.on('disconnect', () => {
@@ -60,9 +60,10 @@
 
 	var elem = document.getElementById('msg');
 	elem.addEventListener('keypress', function(e){
-	if (e.keyCode == 13) {
-		enviar();
-	}
+		if (e.keyCode == 13) {
+			enviar();
+			elem.value = '';
+		}
 	});
 
 
